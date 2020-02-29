@@ -12,6 +12,7 @@ beautifulsoup4 = "*"
 ipykernel = "*"
 lxml = "*"
 selenium = "*"
+html5lib = "*"
 
 [requires]
 python_version = "3.7"
