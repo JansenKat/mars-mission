@@ -10,6 +10,8 @@ pandas = "*"
 requests = "*"
 beautifulsoup4 = "*"
 ipykernel = "*"
+lxml = "*"
+selenium = "*"
 
 [requires]
 python_version = "3.7"
