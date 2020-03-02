@@ -30,7 +30,7 @@ def r_scrape(url):
 
 #Put everything into a single function to return a dictionary of everything.
 def scrape():
-    
+
     #Selenium driver to get soups
     nasa_soup = s_scrape(nasa_url)
     facts_soup = s_scrape(facts_url)
@@ -56,8 +56,7 @@ def scrape():
     #Mars Facts Table
     facts_df = pd.read_html(str(facts_soup.body.find('table',id='tablepress-p-mars-no-2')))[0]
     facts_df.columns = ['description','value']
-    facts_df = facts_df.set_index('description')
-
+    facts_df = facts_df.set_index('description').to_html()
 
     #Astropedia
     #Find Title and url to hemisphere pages.
@@ -66,14 +65,9 @@ def scrape():
 
     #Visit each url found above and add the img_url to the appropriate dictionary.
     for h in astro_d:
-        driver.get(h['url'])
-        driver.implicitly_wait(10)
-        soup = BeautifulSoup(driver.page_source,"lxml")
+        soup = s_scrape(h['url'])
         img = soup.find('a',target='_blank')
         h.update({'img_url':img['href']})
-
-    #Close the Selenium Webdriver
-    driver.close()
 
 if __name__ == "__main__":
     scrape()
