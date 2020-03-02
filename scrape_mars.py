@@ -55,7 +55,7 @@ facts_df = facts_df.set_index('description')
 
 
 #Astropedia
-# We don't have the links to each of the images, so let's go get them as well as their Titles.
+#Find Title and url to hemisphere pages.
 astro_h = astro_soup.find_all('h3')
 astro_d = [{'title':h.text,'url':astro_base+h.parent['href']} for h in astro_h]
 
