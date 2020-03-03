@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from pprint import pprint
 
 #Urls as variables 
 #Some are broken into 2 pieces so the base can be used later.
@@ -18,7 +19,7 @@ astro_url = astro_base+"/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 #Return soup of page.
 def s_scrape(url):
     driver = webdriver.Firefox()
-    driver.get(nasa_url)
+    driver.get(url)
     driver.implicitly_wait(10)
     soup = BeautifulSoup(driver.page_source,"lxml")
     driver.close()
@@ -27,7 +28,7 @@ def s_scrape(url):
 #Scrape provided website with requests
 #Return soup of page.
 def r_scrape(url):
-    r = requests.get(jpl_search).text
+    r = requests.get(url).text
     return BeautifulSoup(r,'lxml')
 
 #Put everything into a single function to return a dictionary of everything.
@@ -82,4 +83,4 @@ def scrape():
     return data
 
 if __name__ == "__main__":
-    scrape()
+    pprint(scrape())
