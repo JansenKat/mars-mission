@@ -3,7 +3,6 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from pprint import pprint
 
 #Urls as variables 
 #Some are broken into 2 pieces so the base can be used later.
@@ -83,4 +82,4 @@ def scrape():
     return data
 
 if __name__ == "__main__":
-    pprint(scrape())
+    scrape()
