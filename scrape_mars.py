@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from pprint import pprint
 
 #Urls as variables 
 #Some are broken into 2 pieces so the base can be used later.
@@ -54,7 +55,7 @@ def scrape():
     data['nasa']=nasa_latest
 
     # Featured Image from JPL
-    featured_image_url = jpl_base+jpl_soup.body.find('article')['style'].split(' ')[1].strip('url').strip(";(')")
+    featured_image_url = jpl_base+jpl_soup.find("a", class_="button fancybox")["data-fancybox-href"]
     data['featured_image'] = featured_image_url
 
     #Twitter
@@ -82,4 +83,4 @@ def scrape():
     return data
 
 if __name__ == "__main__":
-    scrape()
+    pprint(scrape())
