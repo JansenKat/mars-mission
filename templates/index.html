@@ -1,13 +1,57 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Mission to Mars</title>
 
         <!-- Links to stylesheets -->
         <link rel="stylesheet" href="bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        
+        <div></div>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-3" style="text-align:center">Mission to Mars</h1>
+                <p class="lead" style="text-align:center;">
+                    <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape</a>
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="card text-white bg-secondary mb-3">
+                    <div class="card-header">{{results.nasa_news.title}}</div>
+                    <div class="card-body">
+                        <p class="card-text">{{results.nasa_news.teaser}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-7">
+                <!--Featured Image-->
+                    <div class="card text-white bg-secondary mb-3">
+                        <div class="card-header">Featured Mars Image</div>
+                        <div class="card-body">
+                            <img scr="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <div class="card text-white bg-secondary mb-3">
+                        <div class="card-header">Current Weather on Mars</div>
+                        <div class="card-body">
+                            <p class="card-text">{{results.mars_weather}}</p>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-secondary mb-3">
+                        <div class="card-header">Mars Facts</div>
+                        <div class="card-body">
+                            <table class="table table-hover table-active">{{results.facts_table | safe}}</table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
